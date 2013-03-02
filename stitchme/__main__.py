@@ -4,6 +4,7 @@
 import sys
 import Image
 
+
 def load_images():
     try:
         image_name1 = sys.argv[1]
@@ -19,8 +20,16 @@ def load_images():
         sys.exit()
 
 
+def get_horizontal_scanlines(image):
+    pixels = image.load()
+    width, height = image.size
+    scanlines = [[sum(pixels[x, y]) for x in xrange(width)] for y in xrange(height)]
+    return scanlines
+
+
 def main():
     image1, image2 = load_images()
+
 
 if __name__ == '__main__':
     main()
